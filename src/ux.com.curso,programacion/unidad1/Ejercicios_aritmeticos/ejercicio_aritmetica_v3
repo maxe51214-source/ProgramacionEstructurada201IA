@@ -1,32 +1,21 @@
-#Ejemplo de uso de operadores de aritmetica en Python
+import math
 
-def operadores_aritmeticos():
+# demostracion de uso de funciones math
 
-    # Suma
-    suma = 5 + 3
+def mostrar_math():
+    #crear una variable
+    numero = 20
 
-    # Resta
-    resta = 10 - 4
+    sen_x = math.sin(numero)
+    conse_x = math.cos(numero)
+    resultado1 = sen_x ** 2 + conse_x ** 2
 
-    #multiplicacion
-    multiplicacion = 6 * 7
+    print("El seno de", numero, "es:", sen_x)
+    print("El coseno de", numero, "es:", conse_x)
+    print("El resultado de sen^2(x) + cos^2(x) es:", resultado1)
 
-    #division entera
-    division_entera = 10 // 3
+def main():
+    mostrar_math()
 
-    #modulo
-    modulo = 10 % 3
-
-    #potenciacion
-    potencicacion = 2 ** 3
-
-    print("Suma:", suma)
-    print("Resta:", resta)
-    print("Multiplicacion:", multiplicacion)
-    print("Division entera:", division_entera)
-    print("Modulo:", modulo)
-    print("Potenciacion:", potencicacion)
-
-main = operadores_aritmeticos()
 if __name__ == "__main__":
-    main ()
+    main()
