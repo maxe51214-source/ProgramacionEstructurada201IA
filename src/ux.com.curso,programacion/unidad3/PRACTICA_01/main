@@ -1,0 +1,82 @@
+# asistente_basico.py
+
+"""
+Sistema simple de respuestas sobre conceptos de programación.
+Mantiene un enfoque de programación estructurada.
+"""
+
+def limpiar_texto(texto):
+    """Normaliza el texto de entrada"""
+    return texto.lower().strip()
+
+
+def obtener_base_conocimiento():
+    """Devuelve el diccionario con la información"""
+    return {
+        # Estructuras de control
+        "if": "La sentencia if es un condicional. Permite tomar decisiones basadas en una condicion booleana.",
+        "for": "El bucle for se usa para recorrer elementos de una secuencia y ejecutar codigo varias veces.",
+        "while": "El bucle while ejecuta un bloque de codigo mientras una condicion sea verdadera.",
+
+        # Tipos de datos
+        "int": "Representa numeros enteros sin decimales.",
+        "float": "Representa numeros con decimales.",
+        "str": "Representa texto o cadenas de caracteres.",
+
+        # Funciones
+        "def": "Se utiliza para definir funciones en Python.",
+        "print": "Sirve para mostrar informacion en pantalla.",
+        "return": "Devuelve un valor desde una funcion.",
+
+        # Programación estructurada
+        "programacion estructurada": "Se basa en dividir el programa en bloques usando control de flujo.",
+        "secuencia": "Las instrucciones se ejecutan en orden.",
+        "seleccion": "Permite elegir caminos mediante condiciones.",
+        "iteracion": "Permite repetir bloques de codigo."
+    }
+
+
+def buscar_respuesta(texto, base):
+    """Busca coincidencias dentro del mensaje"""
+    for palabra_clave, descripcion in base.items():
+        if palabra_clave in texto:
+            return descripcion
+    return None
+
+
+def generar_respuesta(entrada_usuario):
+    """Procesa la entrada y genera una respuesta"""
+    texto_limpio = limpiar_texto(entrada_usuario)
+    base = obtener_base_conocimiento()
+
+    # Búsqueda por coincidencia parcial
+    resultado = buscar_respuesta(texto_limpio, base)
+    if resultado:
+        return resultado
+
+    # Búsqueda exacta
+    if texto_limpio in base:
+        return base[texto_limpio]
+
+    return "Lo siento, no entiendo esa pregunta."
+
+
+def ejecutar_chat():
+    """Controla la interacción con el usuario"""
+    print("Asistente de programación activo. Escribe 'salir' para terminar.\n")
+
+    continuar = True
+    while continuar:
+        entrada = input("Pregunta: ")
+
+        if limpiar_texto(entrada) == "salir":
+            print("Hasta luego 👋")
+            continuar = False
+        else:
+            respuesta = generar_respuesta(entrada)
+            print("Respuesta:", respuesta)
+
+
+# Punto de entrada
+if __name__ == "__main__":
+    ejecutar_chat()
